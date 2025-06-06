@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:9.3.0
+    container_name: griden
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 4568363
+      MYSQL_DATABASE: griden_db
+      MYSQL_USER: griden_user
+      MYSQL_PASSWORD: 4568363
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - griden_net
+
+volumes:
+  mysql_data:
+networks:
+  griden_net:
