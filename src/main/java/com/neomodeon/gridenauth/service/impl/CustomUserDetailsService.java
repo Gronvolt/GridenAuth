@@ -1,5 +1,7 @@
 package com.neomodeon.gridenauth.service.impl;
 
+import com.neomodeon.gridenauth.entity.User;
+import com.neomodeon.gridenauth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,8 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
+
+    private final UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Пользователь " + username +" не найден"));
+        return new UserDetailsImpl(user);
     }
 }

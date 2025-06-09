@@ -8,3 +8,12 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
+
+logging:
+  level:
+    org:
+      springframework:
+        security=DEBUG:
+
+jwt:
+  secret: Spasi_HospadiSpasi_HospadiSpasi_HospadiSpasi_Hospadi
