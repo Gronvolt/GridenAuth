@@ -25,6 +25,11 @@ public class AuthController {
         return ResponseEntity.ok("OK");
     }
 
+    @GetMapping("/secured-end-point")
+    public ResponseEntity<String> securedEndpoint() {
+        return ResponseEntity.ok("Access granted!");
+    }
+
     @PostMapping("/register")
     public ResponseEntity<UserRegisterResponse> userRegister(@RequestBody UserRegisterRequest userDto) {
         return ResponseEntity.ok(userService.save(userDto));
