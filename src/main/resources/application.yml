@@ -17,3 +17,7 @@ logging:
 
 jwt:
   secret: Spasi_HospadiSpasi_HospadiSpasi_HospadiSpasi_Hospadi
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui

@@ -1,9 +1,30 @@
-<h1>Доска работы над проектом:</h1> <br>
-https://tested-domain-ad8.notion.site/209ff13be4fa801a8913feedcf1eeba3?v=209ff13be4fa816da759000cd1848a9e
+# GridenAuth - JWT Authorization Microservice 🔐
 
-<h1>Схема БД:</h1>
+## 📋 Описание
+GridenAuth — это микросервис для авторизации с поддержкой JWT, refresh-токенов, шифрованием паролей и полной документацией Swagger.
+
+## 🚀 Технологии
+- Java 17
+- Spring Boot 3.x
+- Spring Security
+- JWT (jjwt)
+- Maven
+- Lombok
+- Swagger (springdoc-openapi)
+
+## 🛠️ Возможности
+- Регистрация пользователя
+- Авторизация (логин)
+- Обновление Access токена через Refresh
+- Шифрование паролей с BCrypt
+- Stateless аутентификация
+
+## 🛠️ Схема БД
 https://drawsql.app/teams/neomodeon/diagrams/griden
 
-<h2>Инициализация проекта:</h2>
-1. В терминале docker-compose up -d
-2. Запустить приложение
+## 🔧 Установка
+```bash
+git clone https://github.com/yourname/gridenauth.git
+cd gridenauth
+./mvnw spring-boot:run
+
