@@ -20,7 +20,7 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @GetMapping("healthcheck")
+    @GetMapping("/healthcheck")
     public ResponseEntity<String> healthcheck () {
         return ResponseEntity.ok("OK");
     }

@@ -2,7 +2,6 @@ package com.neomodeon.gridenauth;
 
 import com.neomodeon.gridenauth.dto.AuthRequest;
 import com.neomodeon.gridenauth.dto.AuthResponse;
-import com.neomodeon.gridenauth.dto.UserRegisterRequest;
 import com.neomodeon.gridenauth.entity.Role;
 import com.neomodeon.gridenauth.entity.User;
 import com.neomodeon.gridenauth.mapper.UserMapper;
@@ -23,16 +22,14 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 class UserServiceImplTest {
-    private UserRepository userRepository;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
     private AuthenticationManager authenticationManager;
     private JwtServiceImpl jwtServiceImpl;
     private UserServiceImpl userServiceImpl;
 
     @BeforeEach
     void setUp() {
-        userRepository = mock(UserRepository.class);
-        bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        UserRepository userRepository = mock(UserRepository.class);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         UserMapper userMapper = mock(UserMapper.class);
         authenticationManager = mock(AuthenticationManager.class);
         jwtServiceImpl = mock(JwtServiceImpl.class);
@@ -46,27 +43,6 @@ class UserServiceImplTest {
                 authenticationManager,
                 jwtServiceImpl,
                 customUserDetailsService);
-    }
-
-
-    @Test
-    void createUser() {
-        String username = "testUsername";
-        String password = "testPassword";
-        String email = "testEmail@example.com";
-        UserRegisterRequest userRegisterRequest = new UserRegisterRequest(
-                username,
-                email,
-                password
-        );
-
-        User user = new User(
-                userRegisterRequest.username(),
-                userRegisterRequest.email(),
-                bCryptPasswordEncoder.encode(userRegisterRequest.password()),
-                Role.USER
-        );
-        userRepository.save(user);
     }
 
     @Test

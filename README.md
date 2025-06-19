@@ -24,7 +24,6 @@ https://drawsql.app/teams/neomodeon/diagrams/griden
 
 ## 🔧 Установка
 ```bash
-git clone https://github.com/yourname/gridenauth.git
 cd gridenauth
-./mvnw spring-boot:run
+docker-compose up
 

@@ -5,6 +5,7 @@ import com.neomodeon.gridenauth.config.JwtProperties;
 import com.neomodeon.gridenauth.service.impl.JwtServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,10 +27,10 @@ class JwtServiceImplTest {
                 .build();
 
         String token = jwtService.generateToken(user);
-        assert token != null;
+        assertNotNull(token);
 
         String username = jwtService.extractUsername(token);
-        assert username.equals("testUser");
-        assert jwtService.validateToken(token, user);
+        assertEquals("testUser", username);
+        assertTrue(jwtService.validateToken(token, user));
     }
 }
