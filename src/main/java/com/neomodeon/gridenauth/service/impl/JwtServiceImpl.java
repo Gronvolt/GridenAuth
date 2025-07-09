@@ -23,25 +23,29 @@ public class JwtServiceImpl {
     }
 
     public String generateToken(UserDetails userDetails) {
+        UserDetailsImpl user = (UserDetailsImpl) userDetails;
+
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .claim("roles", userDetails.getAuthorities())
+                .claim("userUuid", user.getUuid())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 15))
                 .signWith(getSigninKey(), SignatureAlgorithm.HS256)
                 .compact();
-
     }
 
     public String generateRefreshToken(UserDetails userDetails) {
+        UserDetailsImpl user = (UserDetailsImpl) userDetails;
+
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .claim("roles", userDetails.getAuthorities())
+                .claim("userUuid", user.getUuid())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 30))
                 .signWith(getSigninKey(), SignatureAlgorithm.HS256)
                 .compact();
-
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {

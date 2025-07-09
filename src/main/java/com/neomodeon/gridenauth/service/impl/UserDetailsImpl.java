@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.UUID;
 
 
 @RequiredArgsConstructor
@@ -28,6 +29,10 @@ public class UserDetailsImpl implements UserDetails {
     @Override
     public String getUsername() {
         return user.getUsername();
+    }
+
+    public UUID getUuid() {
+        return user.getUuid();
     }
 
     @Override
@@ -54,9 +59,7 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
-//    public UUID getUuid() {
-//        return user.getUuid();
-//    }
+
 //
 //    public String getEmail() {
 //        return user.getEmail();
